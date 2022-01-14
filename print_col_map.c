@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 23:05:03 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/13 17:55:32 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/01/14 12:52:07 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    print_col_map(int fd, t_fdf m_size, int **map)
     //int fd;
     char *line;
     char **spt;
-    int k;
+    //int k;
     
     m_size.i = 0;
 

@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:30:24 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/13 17:55:07 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/01/14 17:41:30 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strchr(const char *s)
 	//find = (char) c;
 	str = (char *) s;
 	i = 0;
-	while (str[i] != ',')
+	while (str[i] != 'x')
 	{
 		if (str[i] == 0)
 			return (0);
@@ -31,5 +31,5 @@ char	*ft_strchr(const char *s)
 
 // int main ()
 // {
-//     printf("%s", ft_strchr("1,0x810202", ','));
+//     printf("%s", ft_strchr("1,0x810202"));
 // }
