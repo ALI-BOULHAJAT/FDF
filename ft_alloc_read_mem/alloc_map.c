@@ -6,30 +6,33 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 22:07:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/14 21:10:26 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/01/16 18:54:00 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-void    ft_alloc(t_fdf *m_size)
+void	ft_alloc(t_fdf *m_size)
 {
-    m_size->map = (t_data **)malloc((m_size->line_num + 1) * sizeof(t_data *));
-    if (!m_size->map)
-        return ;
-    m_size->i = 0;
-    while (m_size->i < m_size->line_num)
-    {
-        m_size->map[m_size->i] = (t_data *)malloc((m_size->column_num) * sizeof(t_data));
-        if (!m_size->map[m_size->i])
-        {
-            while (m_size->i)
-            {
-                free (m_size->map[m_size->i]);
-                m_size->i--;
-            }
-            return ;
-        }
-        m_size->i++;
-    }
+	int	col;
+
+	col = m_size->column_num;
+	m_size->map = (t_data **)malloc((m_size->line_num + 1) * sizeof(t_data *));
+	if (!m_size->map)
+		return ;
+	m_size->i = 0;
+	while (m_size->i < m_size->line_num)
+	{
+		m_size->map[m_size->i] = (t_data *)malloc((col) * sizeof(t_data));
+		if (!m_size->map[m_size->i])
+		{
+			while (m_size->i)
+			{
+				free (m_size->map[m_size->i]);
+				m_size->i--;
+			}
+			return ;
+		}
+		m_size->i++;
+	}
 }

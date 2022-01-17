@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   pre_atoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 22:45:45 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/11 15:30:00 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/01/13 14:35:19 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/01/16 19:21:04 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int	ft_atoi(const char *str)
+char	*pre_atoi(char *s)
 {
-	int	i;
-	int	m;
-	int	k;
+	char	*num;
+	int		i;
 
 	i = 0;
-	k = 0;
-	m = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+	while (s[i] != ',')
 		i++;
-	if ((str[i] == '-') || (str[i] == '+'))
+	num = malloc(i + 1);
+	i = 0;
+	while (s[i] != ',')
 	{
-		if (str[i] == '-')
-			m = -1;
+		num[i] = s[i];
 		i++;
-		while (str[i] >= 48 && str[i] <= 57)
-			k = (str[i++] - '0') + (k * 10);
-		return (k * m);
 	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		k = (str[i++] - '0') + (k * 10);
-	}
-	return (k);
-	return (0);
+	num[i] = '\0';
+	return (num);
 }

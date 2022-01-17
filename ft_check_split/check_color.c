@@ -6,21 +6,22 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:34:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/14 17:23:24 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/01/16 19:11:00 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int check_color(char *s)
+int	check_color(char *s)
 {
-    int i;
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] == ',')
-            return (1);
-        i++;
-    }
-    return (0);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == ',')
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 18:04:28 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/12 15:25:35 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/01/16 19:11:17 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 int	count_word(char const *s, char c)
 {
@@ -89,26 +89,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (NULL);
 }
-
-// int main ()
-// {
-// 	int i = 0;
-// 	int j;
-// 	int **tab;
-// 	int fd;
-// 	char *buf;
-// 	fd = open("10-2.fdf", O_RDONLY);
-// 	//printf("%d", fd);
-// 	buf = (char *)malloc(1000);
-// 	j = read(fd,buf,999);
-// 	tab = ft_split(buf);
-// 	//printf("-|");
-	
-// 	while (tab[i])
-// 	{
-// 		printf("%d ", *tab[i]);
-// 		i++;
-// 	}
-// 	//printf("|-");
-// 	return 0;
-// }
