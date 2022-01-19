@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:29:57 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/17 10:37:10 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:22:05 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	count_line(char *file)
 	int		count_line;
 	int		fd;
 
-	fd = open(file, O_RDONLY);
+	fd = open(file, O_RDONLY, 0);
 	count_line = 0;
 	line = get_next_line(fd);
 	while (line)
