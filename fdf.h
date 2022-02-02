@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/19 15:23:25 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:58:42 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "minilibx_macos/mlx.h"
+#include <mlx.h>
 
 typedef struct s_data
 {
@@ -35,8 +35,13 @@ typedef struct s_fdf
     int column_num;
     int i;
     int j;
+    int i1;
+    int j1;
     int zoom;
     int color;
+    int key_i;
+    int key_j;
+    int zom;
 
     void *mlx_ptr;
     void *win_ptr;
@@ -75,6 +80,7 @@ char	*ft_strdup(const char *s1);
 void	stock_map(char *s, t_fdf *m_size);
 void    draw(t_fdf  *m_size);
 void    ft_bresenham(t_fdf *m_size, float i, float j, float i1, float j1);
+//void    ft_triD(float *i, float *j, int z);
 ////////////////////////////////////
 // int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 // int	mlx_int_get_good_color();

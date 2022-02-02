@@ -13,13 +13,13 @@ OBJECT = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECT)
-	make -C ./minilibx_macos/
+#	make -C ./minilibx_macos/
 	ar rc $(NAME) $(OBJECT)
-	gcc ft_fdf.c fdf.a minilibx_macos/libmlx.a -framework OpenGL -framework AppKit -o fdf
+	gcc -g ft_fdf.c fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
 
 clean :
 	rm -f $(OBJECT)
-	make clean -C ./minilibx_macos/
+#	make clean -C ./minilibx_macos/
 
 fclean : clean
 	rm -f $(NAME)
