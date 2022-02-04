@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/02 13:58:42 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:34:40 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_fdf
 
     void *mlx_ptr;
     void *win_ptr;
+    void *image;
 }   t_fdf;
 
 

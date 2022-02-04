@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:29:57 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/19 15:22:05 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:10:52 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ void	stock_map(char *s, t_fdf *m_size)
 {
 	if (check_color(s))
 	{
+		m_size->map[m_size->i][m_size->j].check = 1;
 		m_size->map[m_size->i][m_size->j].z = ft_atoi(pre_atoi(s));
 		m_size->map[m_size->i][m_size->j].color = ft_hexanum(ft_strchr(s));
-		m_size->map[m_size->i][m_size->j].check = 1;
 	}
 	else
 	{
-		m_size->map[m_size->i][m_size->j].z = ft_atoi(s);
 		m_size->map[m_size->i][m_size->j].check = 0;
+		m_size->map[m_size->i][m_size->j].z = ft_atoi(s);
 	}
 }

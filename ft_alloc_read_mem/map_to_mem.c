@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:00:36 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/19 15:22:08 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:25:58 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ void	map_to_mem(int fd, t_fdf *m_size)
 		free (line);
 		line = get_next_line(fd);
 	}
+	//printf("%d\n", m_size->i);
+	//printf("%d\n", m_size->line_num);
+	//printf("%d\n", m_size->column_num);
 	m_size->map[m_size->i] = NULL;
 }
