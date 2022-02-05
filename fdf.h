@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/04 15:34:40 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/05 17:56:33 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,19 @@ typedef struct s_fdf
     int color;
     int key_i;
     int key_j;
-    int zom;
+    float alpha;
 
     void *mlx_ptr;
     void *win_ptr;
     void *image;
+    char *addr;
+    int bit_img;
+    int d_size;
+    int endian;
+    
 }   t_fdf;
+
+
 
 
 int     ft_strlen(const char *s);
@@ -81,6 +88,7 @@ char	*ft_strdup(const char *s1);
 void	stock_map(char *s, t_fdf *m_size);
 void    draw(t_fdf  *m_size);
 void    ft_bresenham(t_fdf *m_size, float i, float j, float i1, float j1);
+void	my_new_window(int x, int y, t_fdf *m_size, int color);
 //void    ft_triD(float *i, float *j, int z);
 ////////////////////////////////////
 // int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
