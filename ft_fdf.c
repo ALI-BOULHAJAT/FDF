@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:33:43 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/05 19:17:54 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/05 21:23:17 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 void	my_new_window(int x, int y, t_fdf *m_size, int color)
 {
 	char *adr;
-	adr = m_size->addr + (y * m_size->d_size) + (x * 4);
-	*((unsigned int *)adr) = color;
+	if((x >= 0 && x < 3000) && (y >= 0 && y < 3000))
+	{
+		adr = m_size->addr + (y * m_size->d_size) + (x * 4);
+		*((unsigned int *)adr) = color;
+	}
 }
 
 void	ft_fdf(char *file, t_fdf *m_size)
@@ -49,11 +52,17 @@ int	ft_movekey(int key, t_fdf *m_size)
 		m_size->key_i += 10;
 	if (key == 123)
 		m_size->key_i -= 10;
-	//draw(m_size);
-	mlx_clear_window(m_size->mlx_ptr, m_size->win_ptr);
-	mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, m_size->key_i, m_size->key_j);
 	if (key == 12)
+	{
 		mlx_destroy_window(m_size->mlx_ptr, m_size->win_ptr);
+		exit(0);
+	}
+	mlx_clear_window(m_size->mlx_ptr, m_size->win_ptr);
+	mlx_destroy_image(m_size->mlx_ptr, m_size->image);
+	m_size->image = mlx_new_image(m_size->mlx_ptr, 3000, 3000);
+	m_size->addr = mlx_get_data_addr(m_size->image, &m_size->bit_img, &m_size->d_size, &m_size->endian);
+	draw(m_size);
+	mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, 0, 0);
 	return (0);
 }
 
@@ -64,9 +73,12 @@ int ft_zoom(int mouse, int x, int y, t_fdf *m_size)
 	if (mouse == 4)
 		m_size->zoom -= 15;
 	//mlx_clear_window(m_size->mlx_ptr, m_size->win_ptr);
-	//draw(m_size);
 	mlx_clear_window(m_size->mlx_ptr, m_size->win_ptr);
-	mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, m_size->key_i, m_size->key_j);
+	mlx_destroy_image(m_size->mlx_ptr, m_size->image);
+	m_size->image = mlx_new_image(m_size->mlx_ptr, 3000, 3000);
+	m_size->addr = mlx_get_data_addr(m_size->image, &m_size->bit_img, &m_size->d_size, &m_size->endian);
+	draw(m_size);
+	mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, 0, 0);
 	//mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, 0, 0);
 	return (0);
 }
@@ -107,14 +119,14 @@ int	main(int ac, char **av)
 	// return (0);
 	
 	m_size->mlx_ptr = mlx_init();
-	m_size->win_ptr = mlx_new_window(m_size->mlx_ptr, 3500, 3500, "FDF");
+	m_size->win_ptr = mlx_new_window(m_size->mlx_ptr, 3000, 3000, "FDF");
 	m_size->image = mlx_new_image(m_size->mlx_ptr, 3000, 3000);
 	m_size->addr = mlx_get_data_addr(m_size->image, &m_size->bit_img, &m_size->d_size, &m_size->endian);
-	m_size->zoom = 2 ;
+	m_size->zoom = 2;
 	m_size->key_i = 700;
 	m_size->key_j = 10;
 	draw(m_size);
-	mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image,100, 100);
+	mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, 0, 0);
 	mlx_hook(m_size->win_ptr , 2, 1L<<0, ft_movekey, m_size);
 	//mlx_hook(m_size->win_ptr , 2, 1L<<0, ft_rotation, m_size);
 	mlx_hook(m_size->win_ptr , 4, 1L<<0, ft_zoom, m_size);

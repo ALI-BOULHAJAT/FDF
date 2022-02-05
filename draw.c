@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:08:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/05 17:55:58 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/05 21:17:17 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void    ft_bresenham(t_fdf *m_size, float i, float j, float i1, float j1)
     
     ft_triD(&i, &j, z, m_size);
     ft_triD(&i1, &j1, z1, m_size);
-    i += m_size->key_i;
-    j += m_size->key_j;
-    i1 += m_size->key_i;
-    j1 += m_size->key_j;
+    // i += m_size->key_i;
+    // j += m_size->key_j;
+    // i1 += m_size->key_i;
+    // j1 += m_size->key_j;
     
     
     di = i1 - i;
@@ -79,7 +79,7 @@ void    ft_bresenham(t_fdf *m_size, float i, float j, float i1, float j1)
     {
         //m_size->color = (( m_size ) == 1) ? 0xe80c0c : 0xffffff;
         //mlx_pixel_put(m_size->mlx_ptr, m_size->win_ptr, i, j, color);
-        my_new_window(i, j, m_size, color);
+        my_new_window(i + m_size->key_i, j + m_size->key_j, m_size, color);
         i += di;
         j += dj;
         //printf("%d - %d\n", i , j);
