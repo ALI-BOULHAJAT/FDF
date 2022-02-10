@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/05 17:56:33 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:47:47 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 #include <string.h>
 #include <stdio.h>
 #include <mlx.h>
+#include <math.h>
+#define MAX_VAL(a, b) (a > b ? a : b)
+#define MIN_VAL(a, b) (a > b ? b : a)
+#define POSIT(a) (a > 0 ? a : -a)
 
 typedef struct s_data
 {
@@ -37,11 +41,15 @@ typedef struct s_fdf
     int j;
     int i1;
     int j1;
-    int zoom;
+    float zoom;
     int color;
+    int z_zoom;
     int key_i;
     int key_j;
     float alpha;
+    int key;
+    int hieght;
+    int lenght;
 
     void *mlx_ptr;
     void *win_ptr;
@@ -87,8 +95,18 @@ char	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 void	stock_map(char *s, t_fdf *m_size);
 void    draw(t_fdf  *m_size);
-void    ft_bresenham(t_fdf *m_size, float i, float j, float i1, float j1);
+void    my_draw(t_fdf *m_size, float i1, float j1);
+//void    my_draw(t_fdf *m_size, float i, float j, float i1, float j1);
 void	my_new_window(int x, int y, t_fdf *m_size, int color);
+float   calc_zoom(int x);
+void	ft_mouvment(int key, t_fdf *m_size);
+void	ft_retation_x_y(int key, t_fdf *m_size);
+void	ft_retation_z(int key, t_fdf *m_size);
+void	ft_ckeck_key(int key, t_fdf *m_size);
+int     ft_movekey(int key, t_fdf *m);
+float	calc_zoom(int x);
+int ft_zoom(int mouse, int x, int y, t_fdf *m_size);
+
 //void    ft_triD(float *i, float *j, int z);
 ////////////////////////////////////
 // int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);

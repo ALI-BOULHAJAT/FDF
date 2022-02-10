@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexanum.c                                       :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 16:57:18 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/07 07:55:18 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/02/09 14:54:13 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/09 15:43:44 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-int	ft_hexanum(char *s)
+void	ft_fdf(char *file, t_fdf *m_size)
 {
-	int	i;
-	int	ret;
-	int	base;
+	int	fd;
 
-	i = 0;
-	ret = 0;
-	base = 1;
-	while (s[i] && s[i] != '\n')
-		i++;
-	while (i--)
+	fd = open(file, O_RDONLY, 0);
+	map_to_mem(fd, m_size);
+	close(fd);
+}
+
+void	my_new_window(int x, int y, t_fdf *m_size, int color)
+{
+	char	*adr;
+
+	if ((x >= 0 && x < m_size->hieght) && (y >= 0 && y < m_size->lenght))
 	{
-		if (s[i] >= 'a' && s[i] <= 'f')
-			ret += ((s[i] - 87) * base);
-		else if (s[i] >= 'A' && s[i] <= 'F')
-			ret += ((s[i] - 55) * base);
-		else if (s[i] >= '0' && s[i] <= '9')
-			ret += (s[i] - 48) * base;
-		base *= 16 ;
+		adr = m_size->addr + (y * m_size->d_size) + (x * 4);
+		*((unsigned int *)adr) = color;
 	}
-	return (ret);
 }

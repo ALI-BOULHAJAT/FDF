@@ -6,103 +6,146 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:08:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/05 21:17:17 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:47:38 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
-#include <math.h>
 
-#define MAX_VAL(a, b) (a > b ? a : b)
-#define POSIT(a) (a > 0 ? a : -a)
-
-void ft_triD(float *i, float *j, int z, t_fdf *m_size)
+void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 {
-    m_size->alpha =0.8;
-     *i = (*i - *j) * cos(m_size->alpha);
-     *j = (*i + *j) * sin(m_size->alpha) - z;
+	if (m_size->key == 88 || m_size->key == 86)
+	{
+		*i = (*i * cos(m_size->alpha)) + (z * sin(m_size->alpha));
+		z = (-(*i) * sin(m_size->alpha)) + (z * cos(m_size->alpha));
+	}
+	else if (m_size->key == 91 || m_size->key == 84)
+	{
+		*j = (*j * cos(m_size->alpha)) + (z * sin(m_size->alpha));
+		z = (-(*j) * sin(m_size->alpha)) + (z * cos(m_size->alpha));
+	}
+	else if (m_size->key == 6 || m_size->key == 7)
+	{
+		*i = (*i * cos(m_size->alpha)) - (*j * sin(m_size->alpha));
+		*j = (*i * sin(m_size->alpha)) + (*j * cos(m_size->alpha));
+	}
+	*i = (*i - *j) * cos(0.523599);
+	*j = (*i + *j) * sin(0.523599) - z;
 }
 
-void    ft_bresenham(t_fdf *m_size, float i, float j, float i1, float j1)
+void	ft_zo(t_fdf *m, float *tab_flo, float *i1, float *j1)
 {
-    float di;
-    float dj;
-    int Val;
-    int z;
-    int z1;
-    int a;
-    int b;
-    int h = 1;
-    int color;
+	tab_flo[2] *= m->zoom;
+	tab_flo[3] *= m->zoom;
+	*i1 *= m->zoom;
+	*j1 *= m->zoom;
+}
 
-    
-    z = m_size->map[(int) j][(int) i].z * 1;
-    z1 = m_size->map[(int) j1][(int) i1].z * 1;
-    if ((m_size->map[(int)j][(int)i].check) == 1)
-        color = m_size->map[(int) j][(int) i].color;
-    else
-        color = 0xffffff;
-    //printf("%d(c) - %d -%d\n", m_size->map[(int)j][(int)i].check, (int)i, (int)j);
-    
-    //zoom
-    i *= m_size->zoom;
-    j *= m_size->zoom;
-    i1 *= m_size->zoom;
-    j1 *= m_size->zoom;
-    
-    
-    m_size->color = (z) ? 0xe80c0c : 0xffffff; 
-    
-    
-    ft_triD(&i, &j, z, m_size);
-    ft_triD(&i1, &j1, z1, m_size);
-    // i += m_size->key_i;
-    // j += m_size->key_j;
-    // i1 += m_size->key_i;
-    // j1 += m_size->key_j;
-    
-    
-    di = i1 - i;
-    dj = j1 - j;
+int	ft_col(t_fdf *m)
+{
+	int	color;
 
+	if ((m->map[m->i][m->j].check) == 1)
+		color = m->map[m->i][m->j].color;
+	else
+		color = 0xffffff;
+	return (color);
+}
 
+void	my_draw(t_fdf *m, float i1, float j1)
+{
+	int		tab_int[3];
+	float	tab_flo[4];
+	int		color;
 
-    Val = MAX_VAL(POSIT(di), POSIT(dj));
-    
-    di /= Val;
-    dj /= Val;
-    //printf("%f - %f\n", di, dj);
-    // m_size->map[i1][j1]->color;
-    
-    while ((int)(i - i1) || (int)(j - j1))
-    {
-        //m_size->color = (( m_size ) == 1) ? 0xe80c0c : 0xffffff;
-        //mlx_pixel_put(m_size->mlx_ptr, m_size->win_ptr, i, j, color);
-        my_new_window(i + m_size->key_i, j + m_size->key_j, m_size, color);
-        i += di;
-        j += dj;
-        //printf("%d - %d\n", i , j);
-    }
-    //printf("%d - %d(colon)\n", m_size->line_num, m_size->column_num);
-    //printf("%d(j) - %d(i) - %d\n", a, b, m_size->map[a][b].z);
+	tab_int[1] = m->map[m->i][m->j].z * m->z_zoom;
+	tab_int[2] = m->map[(int) j1][(int) i1].z * m->z_zoom;
+	tab_flo[2] = (float)m->j;
+	tab_flo[3] = (float)m->i;
+	color = ft_col(m);
+	ft_zo(m, tab_flo, &i1, &j1);
+	ft_3d(&tab_flo[2], &tab_flo[3], tab_int[1], m);
+	ft_3d(&i1, &j1, tab_int[2], m);
+	tab_flo[0] = i1 - tab_flo[2];
+	tab_flo[1] = j1 - tab_flo[3];
+	tab_int[0] = MAX_VAL(POSIT(tab_flo[0]), POSIT(tab_flo[1]));
+	tab_flo[0] /= tab_int[0];
+	tab_flo[1] /= tab_int[0];
+	while ((int)(tab_flo[2] - i1) || (int)(tab_flo[3] - j1))
+	{
+		my_new_window(tab_flo[2] + m->key_i, tab_flo[3] + m->key_j, m, color);
+		tab_flo[2] += tab_flo[0];
+		tab_flo[3] += tab_flo[1];
+	}
+}
+
+void	draw(t_fdf *m_size)
+{
+	m_size->i = 0;
+	while (m_size->i < m_size->line_num)
+	{
+		m_size->j = 0;
+		while (m_size->j < m_size->column_num)
+		{
+			if (m_size->j < m_size->column_num - 1)
+				my_draw(m_size, m_size->j + 1, m_size->i);
+			if (m_size->i < m_size->line_num - 1)
+				my_draw(m_size, m_size->j, m_size->i + 1);
+			m_size->j++;
+		}
+		m_size->i++;
+	}
+}
+
+/*void	my_draw(t_fdf *m_size, float i, float j, float i1, float j1)
+{
+	int tab_int[3];
+	float tab_flo[2];
+	int color;
+
+	tab_int[1] = m_size->map[(int) j][(int) i].z * m_size->z_zoom;
+	tab_int[2] = m_size->map[(int) j1][(int) i1].z * m_size->z_zoom;
+	if ((m_size->map[(int)j][(int)i].check) == 1)
+		color = m_size->map[(int) j][(int) i].color;
+	else
+		color = 0xffffff;
+	i *= m_size->zoom;
+	j *= m_size->zoom;
+	i1 *= m_size->zoom;
+	j1 *= m_size->zoom;
+	ft_3d(&i, &j, tab_int[1], m_size);
+	ft_3d(&i1, &j1, tab_int[2], m_size);
+	tab_flo[0] = i1 - i;
+	tab_flo[1] = j1 - j;
+	tab_int[0] = MAX_VAL(POSIT(tab_flo[0]), POSIT(tab_flo[1]));
+	tab_flo[0] /= tab_int[0];
+	tab_flo[1] /= tab_int[0];
+	while ((int)(i - i1) || (int)(j - j1))
+	{
+		my_new_window(i + m_size->key_i, j + m_size->key_j, m_size, color);
+		i += tab_flo[0];
+		j += tab_flo[1];
+	}
 }
 
 void    draw(t_fdf  *m_size)
 {
-    m_size->i = 0;
-    while (m_size->i < m_size->line_num)
-    {
-        m_size->j = 0;
-        while (m_size->j <= m_size->column_num)
-        {
-            if (m_size->j < m_size->column_num)
-                ft_bresenham(m_size, m_size->j, m_size->i, m_size->j + 1, m_size->i); 
-            if (m_size->i < m_size->line_num - 1)
-                ft_bresenham(m_size, m_size->j, m_size->i, m_size->j, m_size->i + 1);
-            m_size->j++;   
-        }
-        m_size->i++;
-    }
-    //mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, m_size->key_i, m_size->key_j);
-}
+	float tab[4];
+	m_size->i = 0;
+	//while (m_size->j < m_size->column_num)
+	while (m_size->i < m_size->line_num)
+	{
+		m_size->j = 0;
+		//while (m_size->i < m_size->line_num - 1)
+		while (m_size->j < m_size->column_num)
+		{
+			if (m_size->j < m_size->column_num - 1)
+				my_draw(m_size, m_size->j, m_size->i, m_size->j + 1, m_size->i); 
+			if (m_size->i < m_size->line_num - 1)
+				my_draw(m_size, m_size->j, m_size->i, m_size->j, m_size->i + 1);
+			m_size->j++;   
+		}
+		m_size->i++;
+	}
+	//mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, m_size->key_i, m_size->key_j);
+}*/

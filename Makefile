@@ -1,6 +1,7 @@
 SRC = ./ft_alloc_read_mem/alloc_map.c ./ft_convert_to_int/ft_atoi.c ft_fdf.c \
 	./ft_check_split/ft_split.c ./ft_check_split/ft_strchr.c ./ft_convert_to_int/pre_atoi.c ./ft_alloc_read_mem/map_to_mem.c \
-	utils_fdf.c ./ft_check_split/check_color.c ./ft_convert_to_int/ft_hexanum.c ./ft_alloc_read_mem/get_next_line.c draw.c\
+	utils_fdf.c ./ft_check_split/check_color.c ./ft_convert_to_int/ft_hexanum.c ./ft_alloc_read_mem/get_next_line.c draw.c \
+	./fdf_bonus/fdf_bonus.c ./fdf_bonus/movement_func.c ./fdf_bonus/utils_bonus.c ./fdf_bonus/zoom_func.c
 
 NAME = fdf.a
 
@@ -15,7 +16,7 @@ all : $(NAME)
 $(NAME) : $(OBJECT)
 #	make -C ./minilibx_macos/
 	ar rc $(NAME) $(OBJECT)
-	gcc -g ft_fdf.c fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
+	gcc -g ./fdf_bonus/fdf_bonus.c ./fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
 
 clean :
 	rm -f $(OBJECT)
