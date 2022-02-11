@@ -6,14 +6,13 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/09 19:47:47 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/11 08:32:53 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define    FDF_H
 
-//typedef uint32_t GLuint;
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -43,13 +42,18 @@ typedef struct s_fdf
     int j1;
     float zoom;
     int color;
-    int z_zoom;
+    float z_zoom;
     int key_i;
     int key_j;
+    int i_sav;
+    int j_sav;
+    int key_mo;
+    int key_lac;
     float alpha;
     int key;
     int hieght;
     int lenght;
+    int how_much;
 
     void *mlx_ptr;
     void *win_ptr;
@@ -106,6 +110,8 @@ void	ft_ckeck_key(int key, t_fdf *m_size);
 int     ft_movekey(int key, t_fdf *m);
 float	calc_zoom(int x);
 int ft_zoom(int mouse, int x, int y, t_fdf *m_size);
+void	ft_initial_bonus(t_fdf *m_size);
+int     mouse_mov(int x, int y, t_fdf *m);
 
 //void    ft_triD(float *i, float *j, int z);
 ////////////////////////////////////

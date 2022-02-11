@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexanum.c                                       :+:      :+:    :+:   */
+/*   pre_atoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 16:57:18 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/07 07:55:18 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/01/13 14:35:19 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/10 08:29:57 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
-int	ft_hexanum(char *s)
+char	*pre_atoi(char *s)
 {
-	int	i;
-	int	ret;
-	int	base;
+	char	*num;
+	int		i;
 
 	i = 0;
-	ret = 0;
-	base = 1;
-	while (s[i] && s[i] != '\n')
+	while (s[i] != ',')
 		i++;
-	while (i--)
+	num = malloc(i + 1);
+	i = 0;
+	while (s[i] != ',')
 	{
-		if (s[i] >= 'a' && s[i] <= 'f')
-			ret += ((s[i] - 87) * base);
-		else if (s[i] >= 'A' && s[i] <= 'F')
-			ret += ((s[i] - 55) * base);
-		else if (s[i] >= '0' && s[i] <= '9')
-			ret += (s[i] - 48) * base;
-		base *= 16 ;
+		num[i] = s[i];
+		i++;
 	}
-	return (ret);
+	num[i] = '\0';
+	return (num);
 }

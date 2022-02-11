@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:08:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/09 19:47:38 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:26:35 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 {
@@ -73,7 +73,7 @@ void	my_draw(t_fdf *m, float i1, float j1)
 	tab_flo[1] /= tab_int[0];
 	while ((int)(tab_flo[2] - i1) || (int)(tab_flo[3] - j1))
 	{
-		my_new_window(tab_flo[2] + m->key_i, tab_flo[3] + m->key_j, m, color);
+		my_new_window(tab_flo[2] + m->key_i , tab_flo[3] + m->key_j, m, color);
 		tab_flo[2] += tab_flo[0];
 		tab_flo[3] += tab_flo[1];
 	}
@@ -96,56 +96,3 @@ void	draw(t_fdf *m_size)
 		m_size->i++;
 	}
 }
-
-/*void	my_draw(t_fdf *m_size, float i, float j, float i1, float j1)
-{
-	int tab_int[3];
-	float tab_flo[2];
-	int color;
-
-	tab_int[1] = m_size->map[(int) j][(int) i].z * m_size->z_zoom;
-	tab_int[2] = m_size->map[(int) j1][(int) i1].z * m_size->z_zoom;
-	if ((m_size->map[(int)j][(int)i].check) == 1)
-		color = m_size->map[(int) j][(int) i].color;
-	else
-		color = 0xffffff;
-	i *= m_size->zoom;
-	j *= m_size->zoom;
-	i1 *= m_size->zoom;
-	j1 *= m_size->zoom;
-	ft_3d(&i, &j, tab_int[1], m_size);
-	ft_3d(&i1, &j1, tab_int[2], m_size);
-	tab_flo[0] = i1 - i;
-	tab_flo[1] = j1 - j;
-	tab_int[0] = MAX_VAL(POSIT(tab_flo[0]), POSIT(tab_flo[1]));
-	tab_flo[0] /= tab_int[0];
-	tab_flo[1] /= tab_int[0];
-	while ((int)(i - i1) || (int)(j - j1))
-	{
-		my_new_window(i + m_size->key_i, j + m_size->key_j, m_size, color);
-		i += tab_flo[0];
-		j += tab_flo[1];
-	}
-}
-
-void    draw(t_fdf  *m_size)
-{
-	float tab[4];
-	m_size->i = 0;
-	//while (m_size->j < m_size->column_num)
-	while (m_size->i < m_size->line_num)
-	{
-		m_size->j = 0;
-		//while (m_size->i < m_size->line_num - 1)
-		while (m_size->j < m_size->column_num)
-		{
-			if (m_size->j < m_size->column_num - 1)
-				my_draw(m_size, m_size->j, m_size->i, m_size->j + 1, m_size->i); 
-			if (m_size->i < m_size->line_num - 1)
-				my_draw(m_size, m_size->j, m_size->i, m_size->j, m_size->i + 1);
-			m_size->j++;   
-		}
-		m_size->i++;
-	}
-	//mlx_put_image_to_window(m_size->mlx_ptr, m_size->win_ptr, m_size->image, m_size->key_i, m_size->key_j);
-}*/

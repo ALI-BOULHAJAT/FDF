@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:57:34 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/09 19:57:10 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/11 08:34:50 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	ft_mouvment(int key, t_fdf *m_size)
 		m_size->key_i += 10;
 	if (key == 123)
 		m_size->key_i -= 10;
+	// if (m_size->key_mo == 1 && m_size->key_lac != 1)
+	// 	m_size->key_i += m_size->how_much;
+	// printf("%f\n", m_size->key_i);
 }
 
 void	ft_retation_x_y(int key, t_fdf *m_size)
@@ -64,7 +67,9 @@ void	ft_retation_z(int key, t_fdf *m_size)
 
 void	ft_ckeck_key(int key, t_fdf *m_size)
 {
-	if (key >= 123 && key <= 126)
+	// if (key >= 123 && key <= 126)
+	// 	ft_mouvment(key, m_size);
+	if (m_size->key_mo == 1 && m_size->key_lac != 1)
 		ft_mouvment(key, m_size);
 	if (key == 53)
 	{
@@ -92,3 +97,4 @@ int	ft_movekey(int key, t_fdf *m)
 	mlx_put_image_to_window(m->mlx_ptr, m->win_ptr, m->image, 0, 0);
 	return (0);
 }
+

@@ -1,7 +1,8 @@
-SRC = ./ft_alloc_read_mem/alloc_map.c ./ft_convert_to_int/ft_atoi.c ft_fdf.c \
-	./ft_check_split/ft_split.c ./ft_check_split/ft_strchr.c ./ft_convert_to_int/pre_atoi.c ./ft_alloc_read_mem/map_to_mem.c \
-	utils_fdf.c ./ft_check_split/check_color.c ./ft_convert_to_int/ft_hexanum.c ./ft_alloc_read_mem/get_next_line.c draw.c \
-	./fdf_bonus/fdf_bonus.c ./fdf_bonus/movement_func.c ./fdf_bonus/utils_bonus.c ./fdf_bonus/zoom_func.c
+SRCS = ./fdf_M/ft_alloc_read_mem/alloc_map.c ./fdf_M/ft_convert_to_int/ft_atoi.c ./fdf_M/utils_fdf.c \
+	./fdf_M/ft_check_split/ft_split.c ./fdf_M/ft_check_split/ft_strchr.c ./fdf_M/ft_convert_to_int/pre_atoi.c ./fdf_M/ft_alloc_read_mem/map_to_mem.c \
+	./fdf_M/ft_check_split/check_color.c ./fdf_M/ft_convert_to_int/ft_hexanum.c ./fdf_M/ft_alloc_read_mem/get_next_line.c ./fdf_M/draw.c \
+
+BONUS_SRCS = ./fdf_bonus/fdf_bonus.c ./fdf_bonus/movement_func.c ./fdf_bonus/utils_bonus.c ./fdf_bonus/zoom_func.c
 
 NAME = fdf.a
 
@@ -9,18 +10,21 @@ CC = gcc
 
 CFLAGS = -I.
 
-OBJECT = $(SRC:.c=.o)
+OBJECT = $(SRCS:.c=.o)
+BONUS_OBJECT = $(BONUS_SRCS:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJECT)
-#	make -C ./minilibx_macos/
 	ar rc $(NAME) $(OBJECT)
+	gcc -g ./fdf_M/fdf_M.c ./fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
+
+bonus : $(BONUS_OBJECT) $(OBJECT)
+	ar rc $(NAME) $(BONUS_OBJECT) $(OBJECT)
 	gcc -g ./fdf_bonus/fdf_bonus.c ./fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
 
 clean :
-	rm -f $(OBJECT)
-#	make clean -C ./minilibx_macos/
+	rm -f $(OBJECT) $(BONUS_OBJECT)
 
 fclean : clean
 	rm -f $(NAME)
@@ -28,13 +32,3 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
-
-
-#gcc ./ft_convert_to_int/ft_atoi.c ft_fdf.c ./ft_check_split/ft_split.c ./ft_check_split/ft_strchr.c ./ft_convert_to_int/pre_atoi.c ./ft_alloc_read_mem/map_to_mem.c utils_fdf.c ./ft_check_split/check_color.c ./ft_convert_to_int/ft_hexanum.c ./ft_alloc_read_mem/get_next_line.c ./ft_alloc_read_mem/alloc_map.c draw.c
-
-
-# -framework OpenGL -framework AppKit
-
-# make -f Makefile.mk -C ./minilibx/
-# ./minilibx/configure
-# ./minilibx/libmlx.a

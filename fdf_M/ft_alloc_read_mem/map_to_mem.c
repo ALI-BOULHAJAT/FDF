@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:00:36 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/08 15:36:53 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/10 08:29:29 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 void	map_to_mem(int fd, t_fdf *m_size)
 {
@@ -33,8 +33,5 @@ void	map_to_mem(int fd, t_fdf *m_size)
 		free (line);
 		line = get_next_line(fd);
 	}
-	//printf("%d\n", m_size->i);
-	//printf("%d\n", m_size->line_num);
-	//printf("%d\n", m_size->column_num);
 	m_size->map[m_size->i] = NULL;
 }

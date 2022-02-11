@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_hexanum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 22:45:45 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/16 17:24:16 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/01/14 16:57:18 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/10 08:29:53 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
-int	ft_atoi(const char *str)
+int	ft_hexanum(char *s)
 {
 	int	i;
-	int	m;
-	int	k;
+	int	ret;
+	int	base;
 
 	i = 0;
-	k = 0;
-	m = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+	ret = 0;
+	base = 1;
+	while (s[i] && s[i] != '\n')
 		i++;
-	if ((str[i] == '-') || (str[i] == '+'))
+	while (i--)
 	{
-		if (str[i] == '-')
-			m = -1;
-		i++;
-		while (str[i] >= 48 && str[i] <= 57)
-			k = (str[i++] - '0') + (k * 10);
-		return (k * m);
+		if (s[i] >= 'a' && s[i] <= 'f')
+			ret += ((s[i] - 87) * base);
+		else if (s[i] >= 'A' && s[i] <= 'F')
+			ret += ((s[i] - 55) * base);
+		else if (s[i] >= '0' && s[i] <= '9')
+			ret += (s[i] - 48) * base;
+		base *= 16 ;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		k = (str[i++] - '0') + (k * 10);
-	}
-	return (k);
-	return (0);
+	return (ret);
 }

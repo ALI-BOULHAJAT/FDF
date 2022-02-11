@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:34:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/03 10:06:41 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/10 08:29:34 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 int	check_color(char *s)
 {

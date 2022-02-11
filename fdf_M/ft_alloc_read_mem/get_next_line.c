@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 18:30:25 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/01/16 18:57:40 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/10 08:29:14 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 char	*ft_strdup(const char *s1)
 {

@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 18:04:28 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/07 07:46:36 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/10 08:29:42 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 int	count_word(char const *s, char c)
 {
