@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:57:34 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/11 08:34:50 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/12 15:46:35 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void	ft_mouvment(int key, t_fdf *m_size)
 		m_size->key_i += 10;
 	if (key == 123)
 		m_size->key_i -= 10;
-	// if (m_size->key_mo == 1 && m_size->key_lac != 1)
-	// 	m_size->key_i += m_size->how_much;
-	// printf("%f\n", m_size->key_i);
 }
 
 void	ft_retation_x_y(int key, t_fdf *m_size)
@@ -67,13 +64,13 @@ void	ft_retation_z(int key, t_fdf *m_size)
 
 void	ft_ckeck_key(int key, t_fdf *m_size)
 {
-	// if (key >= 123 && key <= 126)
-	// 	ft_mouvment(key, m_size);
-	if (m_size->key_mo == 1 && m_size->key_lac != 1)
+	if (key >= 123 && key <= 126)
+		ft_mouvment(key, m_size);
+	if (m_size->key_mouvment == 1 && m_size->key_release != 1)
 		ft_mouvment(key, m_size);
 	if (key == 53)
 	{
-		mlx_destroy_window(m_size->mlx_ptr, m_size->win_ptr);
+		mlx_destroy_window(m_size->img->mlx, m_size->img->win);
 		exit(0);
 	}
 	if (key >= 84 && key <= 91)
@@ -89,12 +86,8 @@ void	ft_ckeck_key(int key, t_fdf *m_size)
 int	ft_movekey(int key, t_fdf *m)
 {
 	ft_ckeck_key(key, m);
-	mlx_clear_window(m->mlx_ptr, m->win_ptr);
-	mlx_destroy_image(m->mlx_ptr, m->image);
-	m->image = mlx_new_image(m->mlx_ptr, m->lenght, m->hieght);
-	m->addr = mlx_get_data_addr(m->image, &m->bit_img, &m->d_size, &m->endian);
-	draw(m);
-	mlx_put_image_to_window(m->mlx_ptr, m->win_ptr, m->image, 0, 0);
+	mlx_clear_window(m->img->mlx, m->img->win);
+	mlx_destroy_image(m->img->mlx, m->img->img);
+	drow_to_img(m);
 	return (0);
 }
-

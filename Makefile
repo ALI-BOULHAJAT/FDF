@@ -1,8 +1,8 @@
 SRCS = ./fdf_M/ft_alloc_read_mem/alloc_map.c ./fdf_M/ft_convert_to_int/ft_atoi.c ./fdf_M/utils_fdf.c \
 	./fdf_M/ft_check_split/ft_split.c ./fdf_M/ft_check_split/ft_strchr.c ./fdf_M/ft_convert_to_int/pre_atoi.c ./fdf_M/ft_alloc_read_mem/map_to_mem.c \
-	./fdf_M/ft_check_split/check_color.c ./fdf_M/ft_convert_to_int/ft_hexanum.c ./fdf_M/ft_alloc_read_mem/get_next_line.c ./fdf_M/draw.c \
+	./fdf_M/ft_check_split/check_color.c ./fdf_M/ft_convert_to_int/ft_hexanum.c ./fdf_M/ft_alloc_read_mem/get_next_line.c ./fdf_M/draw.c ./fdf_M/zoom.c \
 
-BONUS_SRCS = ./fdf_bonus/fdf_bonus.c ./fdf_bonus/movement_func.c ./fdf_bonus/utils_bonus.c ./fdf_bonus/zoom_func.c
+BONUS_SRCS = ./fdf_bonus/fdf_bonus.c ./fdf_bonus/movement_func.c ./fdf_bonus/utils_bonus.c ./fdf_bonus/mouse_func.c
 
 NAME = fdf.a
 
@@ -16,14 +16,16 @@ BONUS_OBJECT = $(BONUS_SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECT)
+	make -C printf/
 	ar rc $(NAME) $(OBJECT)
-	gcc -g ./fdf_M/fdf_M.c ./fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
+	gcc -g ./fdf_M/fdf_M.c ./fdf.a ./printf/libftprintf.a -lmlx -framework OpenGL -framework AppKit -o fdf
 
 bonus : $(BONUS_OBJECT) $(OBJECT)
 	ar rc $(NAME) $(BONUS_OBJECT) $(OBJECT)
-	gcc -g ./fdf_bonus/fdf_bonus.c ./fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
+	gcc -g ./fdf_bonus/fdf_bonus.c ./fdf.a ./printf/libftprintf.a -lmlx -framework OpenGL -framework AppKit -o fdf
 
 clean :
+	make fclean -C printf/
 	rm -f $(OBJECT) $(BONUS_OBJECT)
 
 fclean : clean

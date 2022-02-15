@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:54:13 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/09 15:43:44 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:41:11 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	my_new_window(int x, int y, t_fdf *m_size, int color)
 
 	if ((x >= 0 && x < m_size->hieght) && (y >= 0 && y < m_size->lenght))
 	{
-		adr = m_size->addr + (y * m_size->d_size) + (x * 4);
+		adr = m_size->img->addr + (y * m_size->img->d_size) + (x * 4);
 		*((unsigned int *)adr) = color;
 	}
 }

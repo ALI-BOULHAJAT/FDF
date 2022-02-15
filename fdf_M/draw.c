@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:08:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/10 18:26:35 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/14 13:15:41 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 	{
 		*i = (*i * cos(m_size->alpha)) + (z * sin(m_size->alpha));
 		z = (-(*i) * sin(m_size->alpha)) + (z * cos(m_size->alpha));
+		printf("%d\n", z);
 	}
 	else if (m_size->key == 91 || m_size->key == 84)
 	{
@@ -29,19 +30,19 @@ void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 		*i = (*i * cos(m_size->alpha)) - (*j * sin(m_size->alpha));
 		*j = (*i * sin(m_size->alpha)) + (*j * cos(m_size->alpha));
 	}
-	*i = (*i - *j) * cos(0.523599);
-	*j = (*i + *j) * sin(0.523599) - z;
+	// if (m_size->key == 88 || m_size->key == 86 || m_size->key == 91 || m_size->key == 84 || m_size->key == 6 || m_size->key == 7)
+	// {
+	// 	*i = (*i - *j) * cos(m_size->alpha);
+	// 	*j = (*i + *j) * sin(m_size->alpha) - z;
+	// }
+	
+	{
+		*i = (*i - *j) * cos(0.523599);
+		*j = (*i + *j) * sin(0.523599) - z;
+	}
 }
 
-void	ft_zo(t_fdf *m, float *tab_flo, float *i1, float *j1)
-{
-	tab_flo[2] *= m->zoom;
-	tab_flo[3] *= m->zoom;
-	*i1 *= m->zoom;
-	*j1 *= m->zoom;
-}
-
-int	ft_col(t_fdf *m)
+int	ft_color(t_fdf *m)
 {
 	int	color;
 
@@ -62,21 +63,30 @@ void	my_draw(t_fdf *m, float i1, float j1)
 	tab_int[2] = m->map[(int) j1][(int) i1].z * m->z_zoom;
 	tab_flo[2] = (float)m->j;
 	tab_flo[3] = (float)m->i;
-	color = ft_col(m);
-	ft_zo(m, tab_flo, &i1, &j1);
+	color = ft_color(m);
+	zoom(m, tab_flo, &i1, &j1);
 	ft_3d(&tab_flo[2], &tab_flo[3], tab_int[1], m);
 	ft_3d(&i1, &j1, tab_int[2], m);
 	tab_flo[0] = i1 - tab_flo[2];
 	tab_flo[1] = j1 - tab_flo[3];
-	tab_int[0] = MAX_VAL(POSIT(tab_flo[0]), POSIT(tab_flo[1]));
+	tab_int[0] = fmax(fabs(tab_flo[0]), fabs(tab_flo[1]));
 	tab_flo[0] /= tab_int[0];
 	tab_flo[1] /= tab_int[0];
 	while ((int)(tab_flo[2] - i1) || (int)(tab_flo[3] - j1))
 	{
-		my_new_window(tab_flo[2] + m->key_i , tab_flo[3] + m->key_j, m, color);
+		my_new_window(tab_flo[2] + m->key_i, tab_flo[3] + m->key_j, m, color);
 		tab_flo[2] += tab_flo[0];
 		tab_flo[3] += tab_flo[1];
 	}
+}
+
+void	drow_to_img(t_fdf *m)
+{
+	m->img->img = mlx_new_image(m->img->mlx, m->lenght, m->hieght);
+	m->img->addr = mlx_get_data_addr(m->img->img, &m->img->bit_img, \
+	&m->img->d_size, &m->img->endian);
+	draw(m);
+	mlx_put_image_to_window(m->img->mlx, m->img->win, m->img->img, 0, 0);
 }
 
 void	draw(t_fdf *m_size)

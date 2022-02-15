@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:29:57 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/10 10:55:19 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:16:24 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,29 @@ int	count_line(char *file)
 	return (count_line);
 }
 
-int	ft_count_coul(char const *s, char c)
-{
-	int		count;
-	int		i;
-
-	i = 0;
-	count = 0;
-	while (s[i])
-	{
-		if ((s[i] != c && s[i + 1] == c) || (s[i] != c && s[i + 1] == '\n'))
-			count++;
-		i++;
-	}
-	return (count);
-}
-
 int	count_coul(char *file)
 {
 	char	*line;
 	int		count_coul;
 	int		fd;
+	int		i;
 
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("No file %s\n", file);
+		exit(0);
+	}
 	line = get_next_line(fd);
-	count_coul = ft_count_coul(line, ' ');
+	i = 0;
+	count_coul = 0;
+	while (line[i])
+	{
+		if ((line[i] != ' ' && line[i + 1] == ' ')
+			|| (line[i] != ' ' && line[i + 1] == '\n'))
+			count_coul++;
+		i++;
+	}
 	close(fd);
 	return (count_coul);
 }

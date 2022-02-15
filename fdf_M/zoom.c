@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zoom_func.c                                        :+:      :+:    :+:   */
+/*   calc_zoom.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 13:34:28 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/11 07:48:38 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/02/11 13:07:06 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/11 17:51:45 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 float	calc_zoom(int x)
 {
@@ -24,17 +24,10 @@ float	calc_zoom(int x)
 	return (val);
 }
 
-int	ft_zoom(int mouse, int x, int y, t_fdf *m)
+void	zoom(t_fdf *m, float *tab_flo, float *i1, float *j1)
 {
-	if (mouse == 5)
-		m->zoom += 1;
-	if (mouse == 4)
-		m->zoom -= 1;
-	mlx_clear_window(m->mlx_ptr, m->win_ptr);
-	mlx_destroy_image(m->mlx_ptr, m->image);
-	m->image = mlx_new_image(m->mlx_ptr, m->lenght, m->hieght);
-	m->addr = mlx_get_data_addr(m->image, &m->bit_img, &m->d_size, &m->endian);
-	draw(m);
-	mlx_put_image_to_window(m->mlx_ptr, m->win_ptr, m->image, 0, 0);
-	return (0);
+	tab_flo[2] *= m->zoom;
+	tab_flo[3] *= m->zoom;
+	*i1 *= m->zoom;
+	*j1 *= m->zoom;
 }
