@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:29:57 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/15 15:16:24 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:20:23 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	count_coul(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("No file %s\n", file);
+		write (2, "No file ", 8);
+		write (2, file, ft_strlen(file));
 		exit(0);
 	}
 	line = get_next_line(fd);

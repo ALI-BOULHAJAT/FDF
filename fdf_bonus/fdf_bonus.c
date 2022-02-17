@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:55:09 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/11 17:43:52 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:37:24 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,13 @@ int	main(int ac, char **av)
 {
 	t_fdf	*m;
 
-	if (ac == 2)
-	{
-		m = (t_fdf *)malloc(sizeof(t_fdf));
-		m->img = (t_img *)malloc(sizeof(t_img));
-		m->column_num = count_coul(av[1]);
-		m->line_num = count_line(av[1]);
-	}
-	else
-		return (0);
-	ft_initial_bonus(m);
+	m = (t_fdf *)malloc(sizeof(t_fdf));
+	m->img = (t_img *)malloc(sizeof(t_img));
+	m->av = av;
+	ft_argv(m, ac);
 	ft_alloc(m);
-	ft_fdf(av[1], m);
-	m->zoom = calc_zoom(fmax(m->column_num, m->line_num));
+	ft_initial(m);
+	ft_fdf(m->av[1], m);
 	m->img->mlx = mlx_init();
 	m->img->win = mlx_new_window(m->img->mlx, m->lenght, m->hieght, "FDF");
 	drow_to_img(m);

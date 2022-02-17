@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:08:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/14 13:15:41 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:38:22 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,7 @@ void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 		*i = (*i * cos(m_size->alpha)) - (*j * sin(m_size->alpha));
 		*j = (*i * sin(m_size->alpha)) + (*j * cos(m_size->alpha));
 	}
-	// if (m_size->key == 88 || m_size->key == 86 || m_size->key == 91 || m_size->key == 84 || m_size->key == 6 || m_size->key == 7)
-	// {
-	// 	*i = (*i - *j) * cos(m_size->alpha);
-	// 	*j = (*i + *j) * sin(m_size->alpha) - z;
-	// }
-	
+	else
 	{
 		*i = (*i - *j) * cos(0.523599);
 		*j = (*i + *j) * sin(0.523599) - z;

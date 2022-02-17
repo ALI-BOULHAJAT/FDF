@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/15 15:06:44 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:31:16 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <math.h>
-# include "printf/ft_printf.h"
 
 typedef struct s_data
 {
@@ -62,6 +61,7 @@ typedef struct s_fdf
 	int		key;
 	int		hieght;
 	int		lenght;
+	char	**av;
 }	t_fdf;
 
 ///////Mandatory part ///////
@@ -92,6 +92,8 @@ void	my_new_window(int x, int y, t_fdf *m_size, int color);
 float	calc_zoom(int x);
 void	drow_to_img(t_fdf *m);
 void	zoom(t_fdf *m, float *tab_flo, float *i1, float *j1);
+void	ft_initial(t_fdf *m);
+void	ft_argv(t_fdf *m, int ac);
 
 ///////Bonus part ///////
 void	ft_ckeck_key(int key, t_fdf *m_size);
