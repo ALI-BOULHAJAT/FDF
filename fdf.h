@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/17 16:31:16 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/19 14:41:12 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,12 @@ int		mouse_release(int mouse, int x, int y, t_fdf *m);
 void	ft_retation_x_y(int key, t_fdf *m_size);
 void	ft_retation_z(int key, t_fdf *m_size);
 int		ft_zoom(int mouse, int x, int y, t_fdf *m_size);
+
+///////Error part ///////
+
+void	err_line(void);
+void	err_file(char *file);
+void	err_data(void);
+void	err_argv(void);
 
 #endif

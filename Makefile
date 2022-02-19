@@ -1,6 +1,6 @@
 SRCS = ./fdf_M/ft_alloc_read_mem/alloc_map.c ./fdf_M/ft_convert_to_int/ft_atoi.c ./fdf_M/utils_fdf.c \
 	./fdf_M/ft_check_split/ft_split.c ./fdf_M/ft_check_split/ft_strchr.c ./fdf_M/ft_convert_to_int/pre_atoi.c ./fdf_M/ft_alloc_read_mem/map_to_mem.c \
-	./fdf_M/ft_check_split/check_color.c ./fdf_M/ft_convert_to_int/ft_hexanum.c ./fdf_M/ft_alloc_read_mem/get_next_line.c ./fdf_M/draw.c ./fdf_M/utils2_fdf.c \
+	./fdf_M/ft_check_split/check_color.c ./fdf_M/ft_convert_to_int/ft_hexanum.c ./fdf_M/ft_alloc_read_mem/get_next_line.c ./fdf_M/draw.c ./fdf_M/error.c ./fdf_M/utils2_fdf.c \
 
 BONUS_SRCS = ./fdf_bonus/fdf_bonus.c ./fdf_bonus/movement_func.c ./fdf_bonus/utils_bonus.c ./fdf_bonus/mouse_func.c
 
