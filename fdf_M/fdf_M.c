@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:33:43 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/17 16:36:12 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:25:03 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_close(int key, t_fdf *m_size)
 void	ft_fdf(char *file, t_fdf *m_size)
 {
 	int	fd;
-
 	fd = open(file, O_RDONLY, 0);
 	map_to_mem(fd, m_size);
 	close(fd);
@@ -47,10 +46,12 @@ int	main(int ac, char **av)
 	t_fdf	*m;
 	int		zom;
 	int		altu;
+	char	**str;
 
 	m = (t_fdf *)malloc(sizeof(t_fdf));
 	m->img = (t_img *)malloc(sizeof(t_img));
 	m->av = av;
+	//str = ft_split(m->av[1], '.');
 	ft_argv(m, ac);
 	ft_alloc(m);
 	ft_initial(m);
@@ -59,5 +60,18 @@ int	main(int ac, char **av)
 	m->img->win = mlx_new_window(m->img->mlx, m->lenght, m->hieght, "FDF");
 	drow_to_img(m);
 	mlx_hook(m->img->win, 2, 1L << 0, ft_close, m);
+	mlx_hook(m->img->win, 17, 1L << 0, ft_close_x, m);
 	mlx_loop(m->img->mlx);
 }
+
+//empty map -> segmantation fault   -------- ok
+//vergul after number -> segmantation fault    -------- ok
+//vergul-zero after number   -------- ok
+//replace number with char   --------- ok
+//replace only one number with char   --------- ok
+//you should handlling nigative number   ------------ ok
+//max color    --------------  ok
+//vergul befor number    
+//X exit  -------------  ok
+//0X fter number -> segmentation fault  --------------  ok
+//leaks

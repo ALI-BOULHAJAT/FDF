@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:55:09 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/17 16:37:24 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 14:26:51 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ int	main(int ac, char **av)
 	mlx_hook(m->img->win, 4, 1L << 0, ft_zoom, m);
 	mlx_hook(m->img->win, 5, 1L << 0, mouse_release, m);
 	mlx_hook(m->img->win, 6, 1L << 0, mouse_mouvment, m);
+	mlx_hook(m->img->win, 17, 1L << 0, ft_close_x, m);
 	mlx_loop(m->img->mlx);
+	return (0);
 }

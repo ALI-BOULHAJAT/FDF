@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 22:45:45 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/10 08:29:50 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:14:43 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_atoi(const char *str)
 			k = (str[i++] - '0') + (k * 10);
 		return (k * m);
 	}
+	// else if (str[i] == ',')
+	// 	k = 0;
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		k = (str[i++] - '0') + (k * 10);

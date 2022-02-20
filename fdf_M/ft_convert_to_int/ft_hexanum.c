@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:57:18 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/10 08:29:53 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 13:09:54 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_hexanum(char *s)
 	base = 1;
 	while (s[i] && s[i] != '\n')
 		i++;
+	if (i > 6)
+		i = 6;
 	while (i--)
 	{
 		if (s[i] >= 'a' && s[i] <= 'f')

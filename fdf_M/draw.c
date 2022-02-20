@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:08:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/17 16:38:22 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 13:13:47 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 	{
 		*i = (*i * cos(m_size->alpha)) + (z * sin(m_size->alpha));
 		z = (-(*i) * sin(m_size->alpha)) + (z * cos(m_size->alpha));
-		printf("%d\n", z);
 	}
 	else if (m_size->key == 91 || m_size->key == 84)
 	{
@@ -30,11 +29,8 @@ void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 		*i = (*i * cos(m_size->alpha)) - (*j * sin(m_size->alpha));
 		*j = (*i * sin(m_size->alpha)) + (*j * cos(m_size->alpha));
 	}
-	else
-	{
-		*i = (*i - *j) * cos(0.523599);
-		*j = (*i + *j) * sin(0.523599) - z;
-	}
+	*i = (*i - *j) * cos(0.523599);
+	*j = (*i + *j) * sin(0.523599) - z;
 }
 
 int	ft_color(t_fdf *m)

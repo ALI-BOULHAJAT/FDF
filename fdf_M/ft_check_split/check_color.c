@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:34:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/10 08:29:34 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 12:30:37 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ int	check_color(char *s)
 	while (s[i])
 	{
 		if (s[i] == ',')
-			return (1);
+		{
+			if (s[i + 1] == '0' && (s[i + 2] == 'x' || s[i + 2] == 'X'))
+				return (1);
+			else if (s[i + 1] >= '0' && s[i + 1] <= '9')
+				return (2);
+			else
+				return (3);
+		}
 		i++;
 	}
 	return (0);

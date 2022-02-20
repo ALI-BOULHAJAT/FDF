@@ -6,24 +6,25 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:00:36 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/19 14:31:42 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:26:17 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-int	pre_stock(t_fdf *m_size, char *str, int coll)
+int	pre_stock(t_fdf *m_size, char *str)
 {
 	int	check;
 
 	check = 0;
-	if (str[0] >= '0' && str[0] <= '9')
+	if (str[0] >= 040 && str[0] <= 126)
 	{
 		stock_map(str, m_size);
 		m_size->j++;
-		coll--;
+		m_size->coll--;
 		check = 1;
 	}
+	free (str);
 	return (check);
 }
 
@@ -31,7 +32,6 @@ void	map_to_mem(int fd, t_fdf *m_size)
 {
 	char	*line;
 	char	**spt;
-	int		coll;
 	int		check;
 
 	m_size->i = 0;
@@ -41,11 +41,11 @@ void	map_to_mem(int fd, t_fdf *m_size)
 	{
 		spt = ft_split(line, ' ');
 		m_size->j = 0;
-		coll = m_size->column_num;
-		while (spt[m_size->j] && (check == 1) && coll)
-			check = pre_stock(m_size, spt[m_size->j], coll);
+		m_size->coll = m_size->column_num;
+		while (spt[m_size->j] && (check == 1) && m_size->coll)
+			check = pre_stock(m_size, spt[m_size->j]);
 		if (m_size->j < m_size->column_num)
-			err_line();
+			err_line(m_size);
 		m_size->i++;
 		free (spt);
 		free (line);

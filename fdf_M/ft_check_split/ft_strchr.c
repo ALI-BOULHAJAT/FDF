@@ -6,20 +6,20 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:30:24 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/10 08:29:45 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 12:01:10 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-char	*ft_strchr(const char *s)
+char	*ft_strchr(const char *s, char c1, char c2)
 {
 	char	*str;
 	int		i;
 
 	str = (char *) s;
 	i = 0;
-	while (str[i] != 'x')
+	while (str[i] != c1 && str[i] != c2)
 	{
 		if (str[i] == 0)
 			return (0);

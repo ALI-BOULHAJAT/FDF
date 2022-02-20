@@ -6,15 +6,18 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 19:58:51 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/19 14:37:53 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:55:10 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	err_line(void)
+void	err_line(t_fdf *m_size)
 {
 	write (2, "Found wrong line length. Exiting.", 33);
+	//free(m_size);
+	//free(m_size->img);
+	system("leaks fdf");
 	exit(0);
 }
 
