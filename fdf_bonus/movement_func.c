@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:57:34 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/20 13:19:17 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 10:10:25 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
 void	ft_mouvment(int key, t_fdf *m_size)
 {
@@ -71,6 +71,7 @@ void	ft_ckeck_key(int key, t_fdf *m_size)
 	if (key == 53)
 	{
 		mlx_destroy_window(m_size->img->mlx, m_size->img->win);
+		system("leaks fdf");
 		exit(0);
 	}
 	if (key >= 84 && key <= 91)
@@ -81,10 +82,21 @@ void	ft_ckeck_key(int key, t_fdf *m_size)
 		m_size->z_zoom += 2;
 	if (key == 78)
 		m_size->z_zoom -= 2;
+	if (key == 19)
+	{
+		m_size->key_2d = 1;
+		m_size->key_3d = 0;
+	}
+	if (key == 20)
+	{
+		m_size->key_2d = 0;
+		m_size->key_3d = 1;
+	}
 }
 
 int	ft_movekey(int key, t_fdf *m)
 {
+	printf("%d\n", key);
 	ft_ckeck_key(key, m);
 	mlx_clear_window(m->img->mlx, m->img->win);
 	mlx_destroy_image(m->img->mlx, m->img->img);

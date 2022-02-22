@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 13:34:28 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/20 13:20:18 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 10:02:29 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
 int	ft_zoom(int mouse, int x, int y, t_fdf *m)
 {
