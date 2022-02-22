@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:55:09 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:26:43 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:22:26 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	main(int ac, char **av)
 	m->img->win = mlx_new_window(m->img->mlx, m->lenght, m->hieght, "FDF");
 	drow_to_img(m);
 	mlx_hook(m->img->win, 2, 1L << 0, ft_movekey, m);
-	mlx_hook(m->img->win, 4, 1L << 0, ft_zoom, m);
-	mlx_hook(m->img->win, 5, 1L << 0, mouse_release, m);
+	mlx_hook(m->img->win, 4, 1L<<12, ft_zoom, m);
+	mlx_hook(m->img->win, 5, 1L << 3, mouse_release, m);
 	mlx_hook(m->img->win, 6, 1L << 0, mouse_mouvment, m);
 	mlx_hook(m->img->win, 17, 1L << 0, ft_close_x, m);
 	mlx_loop(m->img->mlx);

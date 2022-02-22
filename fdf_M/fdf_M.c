@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:33:43 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:20:16 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:57:09 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_close(int key, t_fdf *m_size)
 	if (key == 53)
 	{
 		mlx_destroy_window(m_size->img->mlx, m_size->img->win);
-		system("leaks fdf");
 		exit(0);
 	}
 	return (0);
@@ -64,15 +63,3 @@ int	main(int ac, char **av)
 	mlx_hook(m->img->win, 17, 1L << 0, ft_close_x, m);
 	mlx_loop(m->img->mlx);
 }
-
-//empty map -> segmantation fault   -------- ok
-//vergul after number -> segmantation fault    -------- ok
-//vergul-zero after number   -------- ok
-//replace number with char   --------- ok
-//replace only one number with char   --------- ok
-//you should handlling nigative number   ------------ ok
-//max color    --------------  ok
-//vergul befor number    
-//X exit  -------------  ok
-//0X fter number -> segmentation fault  --------------  ok
-//leaks

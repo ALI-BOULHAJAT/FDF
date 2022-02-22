@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:07:06 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 18:12:43 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:09:09 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	ft_initial(t_fdf *m)
 
 	m->img->d_size = 0;
 	m->img->endian = 0;
-	m->hieght = 1080;
-	m->lenght = 1700;
 	m->alpha = 0;
 	m->beta = 0;
 	m->gamma = 0;
@@ -57,11 +55,13 @@ void	ft_initial(t_fdf *m)
 		m->zoom = calc_zoom(fmax(m->column_num, m->line_num));
 	}
 	zoom = m->zoom;
-	j1 = (sin(m->alpha) * m->column_num);
-	j2 = (cos(m->alpha) * m->line_num);
+	m->hieght = (m->line_num * zoom) * 2;
+	m->lenght = (m->column_num * zoom) * 2;
+	j1 = (sin(0.523599) * m->column_num);
+	j2 = (cos(0.523599) * m->line_num);
 	m->key_j = (((float)m->hieght - ((j1 + j2) / zoom)) / 2);
-	j1 = (cos(m->alpha) * m->column_num);
-	j2 = (sin(m->alpha) * m->line_num);
+	j1 = (cos(0.523599) * m->column_num);
+	j2 = (sin(0.523599) * m->line_num);
 	m->key_i = (((float)m->lenght - ((j1 + j2) / zoom)) / 2) + (j2 / zoom);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:07:06 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 18:12:49 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:05:04 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,12 @@ void	zoom(t_fdf *m, float *tab_flo, float *i1, float *j1)
 
 void	ft_initial(t_fdf *m)
 {
-	float	j1;
-	float	j2;
+	float	p1;
+	float	p2;
 	float	zoom;
 
 	m->img->d_size = 0;
 	m->img->endian = 0;
-	m->hieght = 1080;
-	m->lenght = 1700;
 	m->alpha = 0.523599;
 	if (m->z_zoom == 0 || m->zoom == 0)
 	{
@@ -49,12 +47,14 @@ void	ft_initial(t_fdf *m)
 		m->zoom = calc_zoom(fmax(m->column_num, m->line_num));
 	}
 	zoom = m->zoom;
-	j1 = (sin(m->alpha) * m->column_num);
-	j2 = (cos(m->alpha) * m->line_num);
-	m->key_j = (((float)m->hieght - ((j1 + j2) / zoom)) / 2);
-	j1 = (cos(m->alpha) * m->column_num);
-	j2 = (sin(m->alpha) * m->line_num);
-	m->key_i = (((float)m->lenght - ((j1 + j2) / zoom)) / 2) + (j2 / zoom);
+	m->hieght = (m->line_num * zoom) * 2;
+	m->lenght = (m->column_num * zoom) * 2;
+	p1 = (sin(m->alpha) * m->column_num);
+	p2 = (cos(m->alpha) * m->line_num);
+	m->key_j = (((float)m->hieght - ((p1 + p2) / zoom)) / 2);
+	p1 = (cos(m->alpha) * m->column_num);
+	p2 = (sin(m->alpha) * m->line_num);
+	m->key_i = (((float)m->lenght - ((p1 + p2) / zoom)) / 2) + (p2 / zoom);
 }
 
 void	ft_argv(t_fdf *m, int ac)
