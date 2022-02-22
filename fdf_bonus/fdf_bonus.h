@@ -6,12 +6,12 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 10:09:26 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:57:24 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define    FDF_H
+#ifndef FDF_BONUS_H
+# define    FDF_BONUS_H
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -59,6 +59,9 @@ typedef struct s_fdf
 	int		key_mouvment;
 	int		key_release;
 	float	alpha;
+	float	beta;
+	float	gamma;
+	double	x1;
 	int		key;
 	int		hieght;
 	int		lenght;
@@ -100,6 +103,12 @@ void	ft_argv(t_fdf *m, int ac);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strstr(const char *haystack, const char *needle);
 int		ft_close_x(t_fdf *m_size);
+
+/////////// rotation//////
+
+void	rotate_x(float *i, int *z, t_fdf *m_size);
+void	rotate_y(float *j, int *z, t_fdf *m_size);
+void	rotate_z(float *i, float *j, t_fdf *m_size);
 
 ///////Bonus part ///////
 void	ft_ckeck_key(int key, t_fdf *m_size);

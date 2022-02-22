@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:24:16 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 08:57:56 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:07:40 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ typedef struct s_fdf
 
 int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, char c1, char c2);
-//void	ft_putstr(char *s);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
@@ -101,14 +100,14 @@ int		ft_close_x(t_fdf *m_size);
 
 ///////Bonus part ///////
 
-// void	ft_ckeck_key(int key, t_fdf *m_size);
-// int		ft_movekey(int key, t_fdf *m);
-// void	ft_mouvment(int key, t_fdf *m_size);
-// int		mouse_mouvment(int x, int y, t_fdf *m);
-// int		mouse_release(int mouse, int x, int y, t_fdf *m);
-// void	ft_retation_x_y(int key, t_fdf *m_size);
-// void	ft_retation_z(int key, t_fdf *m_size);
-// int		ft_zoom(int mouse, int x, int y, t_fdf *m_size);
+void	ft_ckeck_key(int key, t_fdf *m_size);
+int		ft_movekey(int key, t_fdf *m);
+void	ft_mouvment(int key, t_fdf *m_size);
+int		mouse_mouvment(int x, int y, t_fdf *m);
+int		mouse_release(int mouse, int x, int y, t_fdf *m);
+void	ft_retation_x_y(int key, t_fdf *m_size);
+void	ft_retation_z(int key, t_fdf *m_size);
+int		ft_zoom(int mouse, int x, int y, t_fdf *m_size);
 
 ///////Error part ///////
 

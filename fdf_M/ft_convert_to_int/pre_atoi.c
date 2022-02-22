@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:35:19 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/20 18:39:19 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:19:49 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fdf.h"
+#include "../fdf.h"
 
 char	*pre_atoi(char *s)
 {

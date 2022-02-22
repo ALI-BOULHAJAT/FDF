@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 14:30:24 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:18:55 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/01/09 22:45:45 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/22 11:25:39 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
-char	*ft_strchr(const char *s, char c1, char c2)
+int	ft_atoi(const char *str)
 {
-	char	*str;
-	int		i;
+	int	i;
+	int	m;
+	int	k;
 
-	str = (char *) s;
 	i = 0;
-	while (str[i] != c1 && str[i] != c2)
-	{
-		if (str[i] == 0)
-			return (0);
+	k = 0;
+	m = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
 		i++;
+	if ((str[i] == '-') || (str[i] == '+'))
+	{
+		if (str[i] == '-')
+			m = -1;
+		i++;
+		while (str[i] >= 48 && str[i] <= 57)
+			k = (str[i++] - '0') + (k * 10);
+		return (k * m);
 	}
-	return (&str[i + 1]);
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		k = (str[i++] - '0') + (k * 10);
+	}
+	return (k);
+	return (0);
 }

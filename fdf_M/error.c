@@ -6,16 +6,15 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 19:58:51 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 07:50:49 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:07:18 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	err_line(t_fdf *m_size)
 {
 	write (2, "Found wrong line length. Exiting.", 33);
-	//system("leaks fdf");
 	exit(1);
 }
 

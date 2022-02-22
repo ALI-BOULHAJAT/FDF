@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:57:18 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/20 13:09:54 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:19:45 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fdf.h"
+#include "../fdf.h"
 
 int	ft_hexanum(char *s)
 {

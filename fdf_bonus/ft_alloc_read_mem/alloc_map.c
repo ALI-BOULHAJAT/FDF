@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 22:07:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:19:05 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:24:17 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
 void	ft_alloc(t_fdf *m_size)
 {

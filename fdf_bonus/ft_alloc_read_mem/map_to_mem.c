@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:00:36 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 18:08:25 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:06:39 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
 int	pre_stock(t_fdf *m_size, char *str)
 {

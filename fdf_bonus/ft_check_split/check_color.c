@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 14:30:24 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:18:55 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/01/13 20:34:16 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/22 11:25:18 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
-char	*ft_strchr(const char *s, char c1, char c2)
+int	check_color(char *s)
 {
-	char	*str;
-	int		i;
+	int	i;
 
-	str = (char *) s;
 	i = 0;
-	while (str[i] != c1 && str[i] != c2)
+	while (s[i])
 	{
-		if (str[i] == 0)
-			return (0);
+		if (s[i] == ',')
+		{
+			if (s[i + 1] == '0' && (s[i + 2] == 'x' || s[i + 2] == 'X'))
+				return (1);
+			else if (s[i + 1] >= '0' && s[i + 1] <= '9')
+				return (2);
+			else
+				return (3);
+		}
 		i++;
 	}
-	return (&str[i + 1]);
+	return (0);
 }

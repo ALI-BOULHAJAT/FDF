@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_hexanum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 14:30:24 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:18:55 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/01/14 16:57:18 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/22 11:25:45 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
-char	*ft_strchr(const char *s, char c1, char c2)
+int	ft_hexanum(char *s)
 {
-	char	*str;
-	int		i;
+	int	i;
+	int	ret;
+	int	base;
 
-	str = (char *) s;
 	i = 0;
-	while (str[i] != c1 && str[i] != c2)
-	{
-		if (str[i] == 0)
-			return (0);
+	ret = 0;
+	base = 1;
+	while (s[i] && s[i] != '\n')
 		i++;
+	if (i > 6)
+		i = 6;
+	while (i--)
+	{
+		if (s[i] >= 'a' && s[i] <= 'f')
+			ret += ((s[i] - 87) * base);
+		else if (s[i] >= 'A' && s[i] <= 'F')
+			ret += ((s[i] - 55) * base);
+		else if (s[i] >= '0' && s[i] <= '9')
+			ret += (s[i] - 48) * base;
+		base *= 16 ;
 	}
-	return (&str[i + 1]);
+	return (ret);
 }

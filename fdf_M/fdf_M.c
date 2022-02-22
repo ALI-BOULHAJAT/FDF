@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:33:43 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/21 19:03:54 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:20:16 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	my_new_window(int x, int y, t_fdf *m_size, int color)
 {

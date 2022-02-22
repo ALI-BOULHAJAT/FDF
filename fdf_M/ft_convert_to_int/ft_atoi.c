@@ -6,11 +6,11 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 22:45:45 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/20 20:27:22 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:19:42 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fdf.h"
+#include "../fdf.h"
 
 int	ft_atoi(const char *str)
 {

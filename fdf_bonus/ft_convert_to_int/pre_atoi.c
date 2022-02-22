@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   pre_atoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 14:30:24 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:18:55 by aboulhaj         ###   ########.fr       */
+/*   Created: 2022/01/13 14:35:19 by aboulhaj          #+#    #+#             */
+/*   Updated: 2022/02/22 11:25:52 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../fdf_bonus.h"
 
-char	*ft_strchr(const char *s, char c1, char c2)
+char	*pre_atoi(char *s)
 {
-	char	*str;
+	char	*num;
 	int		i;
 
-	str = (char *) s;
 	i = 0;
-	while (str[i] != c1 && str[i] != c2)
+	while (s[i] != ',' && s[i])
+		i++;
+	num = malloc(i + 1);
+	i = 0;
+	while (s[i] != ',' && s[i])
 	{
-		if (str[i] == 0)
-			return (0);
+		num[i] = s[i];
 		i++;
 	}
-	return (&str[i + 1]);
+	num[i] = '\0';
+	return (num);
 }

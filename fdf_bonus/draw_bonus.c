@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:08:26 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 11:41:14 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:59:26 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	ft_3d(float *i, float *j, int z, t_fdf *m_size)
 {
-	*i = (*i - *j) * cos(0.523599);
-	*j = (*i + *j) * sin(0.523599) - z;
+	if (m_size->key == 88 || m_size->key == 86)
+		rotate_x(i, &z, m_size);
+	else if (m_size->key == 91 || m_size->key == 84)
+		rotate_y(j, &z, m_size);
+	else if (m_size->key == 6 || m_size->key == 7)
+		rotate_z(i, j, m_size);
+	if ((m_size->key_3d == 1) && (m_size->key_2d == 0))
+	{
+		*i = (*i - *j) * cos(0.523599);
+		*j = (*i + *j) * sin(0.523599) - z;
+	}
 }
 
 int	ft_color(t_fdf *m)

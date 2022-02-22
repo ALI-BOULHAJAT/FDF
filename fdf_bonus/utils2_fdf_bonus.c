@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2_fdf.c                                       :+:      :+:    :+:   */
+/*   utils2_fdf_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:07:06 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/22 18:12:49 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:12:43 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 float	calc_zoom(int x)
 {
@@ -30,6 +30,10 @@ void	zoom(t_fdf *m, float *tab_flo, float *i1, float *j1)
 	tab_flo[3] *= m->zoom;
 	*i1 *= m->zoom;
 	*j1 *= m->zoom;
+	tab_flo[3] -= ((m->line_num * m->zoom) / 2);
+	tab_flo[2] -= ((m->column_num * m->zoom) / 2);
+	*i1 -= (m->column_num * m->zoom) / 2;
+	*j1 -= (m->line_num * m->zoom) / 2;
 }
 
 void	ft_initial(t_fdf *m)
@@ -42,7 +46,11 @@ void	ft_initial(t_fdf *m)
 	m->img->endian = 0;
 	m->hieght = 1080;
 	m->lenght = 1700;
-	m->alpha = 0.523599;
+	m->alpha = 0;
+	m->beta = 0;
+	m->gamma = 0;
+	m->key_2d = 0;
+	m->key_3d = 1;
 	if (m->z_zoom == 0 || m->zoom == 0)
 	{
 		m->z_zoom = 1;
