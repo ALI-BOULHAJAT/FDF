@@ -5,7 +5,6 @@ SRCS = ./fdf_M/ft_alloc_read_mem/alloc_map.c ./fdf_M/ft_convert_to_int/ft_atoi.c
 
 BONUS_SRCS = ./fdf_bonus/fdf_bonus.c ./fdf_bonus/movement_func.c ./fdf_bonus/utils_bonus.c ./fdf_bonus/mouse_func.c
 
-NAME = fdf.a
 
 CC = gcc
 
@@ -17,18 +16,16 @@ BONUS_OBJECT = $(BONUS_SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECT)
-	ar rc $(NAME) $(OBJECT)
-	gcc -g ./fdf_M/fdf_M.c ./fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
+	gcc -g ./fdf_M/fdf_M.c $(OBJECT) -lmlx -framework OpenGL -framework AppKit -o fdf
 
 bonus : $(BONUS_OBJECT) $(OBJECT)
-	ar rc $(NAME) $(BONUS_OBJECT) $(OBJECT)
-	gcc -g ./fdf_bonus/fdf_bonus.c ./fdf.a -lmlx -framework OpenGL -framework AppKit -o fdf
+	gcc -g ./fdf_bonus/fdf_bonus.c $(OBJECT) $(BONUS_OBJECT) -lmlx -framework OpenGL -framework AppKit -o fdf
 
 clean :
 	rm -f $(OBJECT) $(BONUS_OBJECT)
 
 fclean : clean
-	rm -f $(NAME)
+	rm -f fdf
 
 re : fclean all
 

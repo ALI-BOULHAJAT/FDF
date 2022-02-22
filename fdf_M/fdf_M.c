@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:33:43 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/20 18:25:03 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/21 19:03:54 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	ft_close(int key, t_fdf *m_size)
 	if (key == 53)
 	{
 		mlx_destroy_window(m_size->img->mlx, m_size->img->win);
+		system("leaks fdf");
 		exit(0);
 	}
 	return (0);
@@ -36,6 +37,7 @@ int	ft_close(int key, t_fdf *m_size)
 void	ft_fdf(char *file, t_fdf *m_size)
 {
 	int	fd;
+
 	fd = open(file, O_RDONLY, 0);
 	map_to_mem(fd, m_size);
 	close(fd);
@@ -51,7 +53,6 @@ int	main(int ac, char **av)
 	m = (t_fdf *)malloc(sizeof(t_fdf));
 	m->img = (t_img *)malloc(sizeof(t_img));
 	m->av = av;
-	//str = ft_split(m->av[1], '.');
 	ft_argv(m, ac);
 	ft_alloc(m);
 	ft_initial(m);

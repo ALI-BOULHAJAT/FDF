@@ -6,7 +6,7 @@
 /*   By: aboulhaj <aboulhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:07:06 by aboulhaj          #+#    #+#             */
-/*   Updated: 2022/02/20 17:40:18 by aboulhaj         ###   ########.fr       */
+/*   Updated: 2022/02/22 07:31:11 by aboulhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_argv(t_fdf *m, int ac)
 	{
 		m->column_num = count_coul(m->av[1]);
 		m->line_num = count_line(m->av[1]);
+		printf("%d    ------ %d  \n", m->column_num, m->line_num);
 		if (ac == 4)
 		{
 			m->zoom = ft_atoi(m->av[2]);
@@ -81,8 +82,6 @@ void	ft_argv(t_fdf *m, int ac)
 int	ft_close_x(t_fdf *m_size)
 {
 	mlx_destroy_window(m_size->img->mlx, m_size->img->win);
-	//free(m_size);
-	system("leaks fdf");
 	exit(0);
 	return (0);
 }
