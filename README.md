@@ -1,5 +1,6 @@
-# fdf
-This project consists of graphically creating the schematic representation of a terrain in relief 
+# `FdF` is a 3D Wireframe Viewer. **(macOS is only supported)**
+
+This project consists of graphically creating the schematic representation of a terrain in relief
 
 ### JULIA MAP
 
